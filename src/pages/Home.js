@@ -22,13 +22,13 @@ export default function Home() {
     return (
         <>
             <div className="banner">
-                <div id="carouselExampleIndicators" classNameName="carousel slide" data-ride="carousel">
-                    <ol className="carousel-indicators">
+                {/* <div id="" classNameName="carousel slide" data-ride="carousel"> */}
+                    {/* <ol className="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                    </ol>
+                    </ol> */}
                     <div className="carousel-inner" role="listbox">
                         <div className="carousel-item active">
                             <div className="carousel-caption text-center">
@@ -65,17 +65,17 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <a className="carousel-control-prev" href="" role="button" data-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span className="sr-only">Previous</span>
                     </a>
-                    <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <a className="carousel-control-next" href="" role="button" data-slide="next">
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
                         <span className="sr-only">Next</span>
                     </a>
                 </div>
                 {/* <!--//banner --> */}
-            </div>
+            {/* </div> */}
             <section className="banner-bottom-wthreelayouts py-lg-5 py-3">
                 <div className="container-fluid">
                     <div className="inner-sec-shop px-lg-4 px-3">

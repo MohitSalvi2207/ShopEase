@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function About() {
     return (
@@ -64,7 +65,7 @@ export default function About() {
 
 					<ul className="short">
 						<li>
-							<a href="index.html">Home</a>
+							<Link to="/">Home</Link>
 							<i>|</i>
 						</li>
 						<li>About Us</li>

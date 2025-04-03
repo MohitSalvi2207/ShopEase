@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 // import { Link, useLocation } from 'react-router-dom'
 import { useParams, Link, data } from "react-router-dom";
 import { getcategories, getProductCategory } from "./apis";
+import { NavDropdown } from "react-bootstrap";
 
 export default function Product() {
   let [cat, setCat] = useState([]);
@@ -21,6 +22,12 @@ export default function Product() {
   });
 
   console.log(categoriesdata);
+
+    const categories = useQuery({
+      queryKey: ["categoriesdata"],
+      queryFn: getcategories,
+      refetchInterval: 50000,
+    });
   
 //   useEffect(() => {
 //       fetch(`https://dummyjson.com/products/category/${name}`).then((response) => {
@@ -52,7 +59,7 @@ export default function Product() {
         <div class="row">
           {/* <!-- product left --> */}
           <div class="side-bar col-lg-3">
-            <div class="search-hotel">
+            {/* <div class="search-hotel">
               <h3 class="agileits-sear-head">Search Here..</h3>
               <form action="#" method="post">
                 <input
@@ -67,7 +74,7 @@ export default function Product() {
                 </button>
                 <div class="clearfix"> </div>
               </form>
-            </div>
+            </div> */}
             {/* <!-- price range --> */}
             <div class="range">
               <h3 class="agileits-sear-head">Price range</h3>
@@ -89,58 +96,65 @@ export default function Product() {
             {/* <!-- //price range --> */}
             {/* <!--preference --> */}
             <div class="left-side">
-              <h3 class="agileits-sear-head">Deal Offer On</h3>
-              <ul>
-              {
-                cat.map((value) => {
-                    return (
-                      <>
-                        <li>
-                          <Link
-                            to={`/product/${value.name}`}
-                            style={{ color: "black" }}
-                          >
-                            {value.name}
-                          </Link>
-                        </li>
-                      </>
-                    );
-                  })
-              }
-                
-              </ul>
-            </div>
+                  <h3 class="agileits-sear-head">Deal Offer On</h3>
+                  <NavDropdown
+                    title="Product"
+                    id="nav-dropdown"
+                    style={{ listStyle: "none" }}
+                  >
+                    <ul style={{ padding: "10px" }}>
+                      {categories.isPending ? (
+                        <h1>Loading...</h1>
+                      ) : (
+                        categories.data.map((value) => {
+                          return (
+                            <>
+                              <li>
+                                <Link
+                                  to={`/product/${value.name}`}
+                                  style={{ color: "black" }}
+                                >
+                                  {value.name}
+                                </Link>
+                              </li>
+                            </>
+                          );
+                        })
+                      )}
+                    </ul>
+                  </NavDropdown>
+                </div>
             {/* <!-- // preference --> */}
             {/* <!-- discounts --> */}
-            <div class="left-side">
-              <h3 class="agileits-sear-head">Discount</h3>
-              <ul>
-                <li>
-                  <input type="checkbox" class="checked" />
-                  <span class="span">5% or More</span>
-                </li>
-                <li>
-                  <input type="checkbox" class="checked" />
-                  <span class="span">10% or More</span>
-                </li>
-                <li>
-                  <input type="checkbox" class="checked" />
-                  <span class="span">20% or More</span>
-                </li>
-                <li>
-                  <input type="checkbox" class="checked" />
-                  <span class="span">30% or More</span>
-                </li>
-                <li>
-                  <input type="checkbox" class="checked" />
-                  <span class="span">50% or More</span>
-                </li>
-                <li>
-                  <input type="checkbox" class="checked" />
-                  <span class="span">60% or More</span>
-                </li>
-              </ul>
-            </div>
+              {/* <div class="left-side">
+                <h3 class="agileits-sear-head">Discount</h3>
+                <ul>
+                  <li>
+                    <input type="checkbox" class="checked" />
+                    <span class="span">5% or More</span>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="checked" />
+                    <span class="span">10% or More</span>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="checked" />
+                    <span class="span">20% or More</span>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="checked" />
+                    <span class="span">30% or More</span>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="checked" />
+                    <span class="span">50% or More</span>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="checked" />
+                    <span class="span">60% or More</span>
+                  </li>
+                </ul>
+              </div> */}
             {/* <!-- //discounts --> */}
             {/* <!-- reviews --> */}
             <div class="customer-rev left-side">

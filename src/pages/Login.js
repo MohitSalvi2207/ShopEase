@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { getSingleProduct } from "./apis";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../features/LoginSlice";
 import { toast } from "react-toastify";
@@ -45,7 +45,7 @@ export default function Login() {
             <div className="inner_breadcrumb">
               <ul className="short">
                 <li>
-                  <a href="index.html">Home</a>
+                  <Link to="/">Home</Link>
                   <i>|</i>
                 </li>
                 <li> Login </li>

@@ -69,7 +69,7 @@ export default function Shop() {
             <div class="row">
               {/* <!-- product left --> */}
               <div class="side-bar col-lg-3">
-                <div class="search-hotel">
+                {/* <div class="search-hotel">
                   <h3 class="agileits-sear-head">Search Here..</h3>
                   <form action="#" method="post">
                     <input
@@ -84,7 +84,7 @@ export default function Shop() {
                     </button>
                     <div class="clearfix"> </div>
                   </form>
-                </div>
+                </div> */}
                 {/* <!-- price range --> */}
                 <div class="range">
                   <h3 class="agileits-sear-head">Price range</h3>

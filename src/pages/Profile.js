@@ -1,34 +1,43 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { userLogout } from "../features/LoginSlice";
 
 export default function Profile() {
-    
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const login = useSelector((state) => state.Login);
   console.log(login);
 
+  const handleLogout = () => {
+    dispatch(userLogout());
+    navigate("/");
+  };
+
   return (
     <>
-      <section class="vh-100 d-flex align-items-center">
-        <div class="container">
-          <div class="row d-flex justify-content-center">
-            <div class="col-md-10 col-lg-6">
+      <section className="d-flex align-items-center py-5">
+        <div className="container">
+          <div className="row d-flex justify-content-center">
+            <div className="col-12 col-md-10 col-lg-6">
               <div
-                class="card shadow-lg p-4"
+                className="card shadow-lg p-3 p-md-4"
                 style={{
                   borderRadius: "15px",
                   backgroundColor: "#fff",
-                  margin: "20px 0px",
+                  margin: "10px 0px",
                 }}
               >
-                <div class="card-body text-center">
+                <div className="card-body text-center">
                   {/* Profile Image */}
-                  <div class="mt-3 mb-4">
+                  <div className="mt-2 mt-md-3 mb-3 mb-md-4">
                     <img
                       src={login.user.image}
-                      class="rounded-circle img-fluid border shadow"
+                      className="rounded-circle img-fluid border shadow"
                       style={{
-                        width: "120px",
-                        height: "120px",
+                        width: "100px",
+                        height: "100px",
                         objectFit: "cover",
                       }}
                       alt="Profile"
@@ -36,62 +45,62 @@ export default function Profile() {
                   </div>
 
                   {/* User Name */}
-                  <h3 class="fw-bold text-dark">
-                    {login.user.firstName} {login.lastName}
-                  </h3>
-                  <p class="text-muted">{login.user.maidenName}</p>
+                  <h4 className="fw-bold text-dark mb-1">
+                    {login.user.firstName} {login.user.lastName}
+                  </h4>
+                  <p className="text-muted small mb-3">
+                    {login.user.maidenName}
+                  </p>
 
-                  {/* Social Media Buttons */}
-                  {/* <div class="d-flex justify-content-center gap-3 mb-4">
-              <a href="#!" class="btn btn-outline-primary btn-sm rounded-circle"><i class="fab fa-facebook-f"></i></a>
-              <a href="#!" class="btn btn-outline-info btn-sm rounded-circle"><i class="fab fa-twitter"></i></a>
-              <a href="#!" class="btn btn-outline-danger btn-sm rounded-circle"><i class="fab fa-instagram"></i></a>
-            </div> */}
-
-                  {/* User Details Section */}
-                  <div class="d-flex justify-content-between text-center mt-4 mb-3">
-                    <div>
-                      <i class="fas fa-user-circle fa-lg text-secondary"></i>
-                      <p class="mb-1 text-dark fw-semibold">
+                  {/* User Details Section - Stacked on mobile */}
+                  <div className="row text-center mt-3 mb-3">
+                    <div className="col-12 col-sm-4 mb-3 mb-sm-0">
+                      <i className="fas fa-user-circle text-secondary"></i>
+                      <p className="mb-1 text-dark fw-semibold small">
                         {login.user.gender}
                       </p>
-                      <p class="text-muted small">{login.age} years old</p>
+                      <p className="text-muted small">{login.age} years old</p>
                     </div>
-                    <div>
-                      <i class="fas fa-envelope fa-lg text-secondary"></i>
-                      <p class="mb-1 text-dark fw-semibold">
+                    <div className="col-12 col-sm-4 mb-3 mb-sm-0">
+                      <i className="fas fa-envelope text-secondary"></i>
+                      <p className="mb-1 text-dark fw-semibold small text-truncate">
                         {login.user.email}
                       </p>
-                      <p class="text-muted small">Password: {login.password}</p>
+                      <p className="text-muted small">
+                        Password: {login.password}
+                      </p>
                     </div>
-                    <div>
-                      <i class="fas fa-map-marker-alt fa-lg text-secondary"></i>
-                      <p class="mb-1 text-dark fw-semibold">
+                    <div className="col-12 col-sm-4">
+                      <i className="fas fa-map-marker-alt text-secondary"></i>
+                      <p className="mb-1 text-dark fw-semibold small">
                         {login.user.role}
                       </p>
-                      <p class="text-muted small">
+                      <p className="text-muted small text-truncate">
                         {login.user.address.address}
                       </p>
                     </div>
                   </div>
 
-                  {/* Logout / Profile Edit Button */}
-                  <button
-                    class="btn btn-primary btn-lg px-4"
-                    style={{
-                      backgroundColor: "#ff4e00",
-                      border: "none",
-                      transition: "0.3s",
-                    }}
-                    onMouseOver={(e) =>
-                      (e.target.style.backgroundColor = "#cc3c00")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.target.style.backgroundColor = "#ff4e00")
-                    }
-                  >
-                    Edit Profile
-                  </button>
+                  {/* Logout Button - Full width on mobile */}
+                  <div className="d-grid gap-2 mt-4">
+                    <button
+                      className="btn btn-primary px-4 py-2"
+                      style={{
+                        backgroundColor: "#ff4e00",
+                        border: "none",
+                        transition: "0.3s",
+                      }}
+                      onMouseOver={(e) =>
+                        (e.target.style.backgroundColor = "#cc3c00")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.target.style.backgroundColor = "#ff4e00")
+                      }
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

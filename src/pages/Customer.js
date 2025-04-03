@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Customer() {
   return (
@@ -11,7 +12,7 @@ export default function Customer() {
 
 					<ul className="short">
 						<li>
-							<a href="index.html">Home</a>
+							<Link to="/">Home</Link>
 							<i>|</i>
 						</li>
 						<li>Customers</li>
